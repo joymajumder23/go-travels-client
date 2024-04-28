@@ -77,7 +77,7 @@ const Navbar = () => {
                         </ul>
                     </div>
                     <div>
-                    <a className="btn">Login</a>
+                    <a className="btn rounded-none bg-white">Login</a>
                     </div>
                 </div>
             </div>
