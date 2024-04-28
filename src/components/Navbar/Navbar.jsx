@@ -1,6 +1,14 @@
-import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../provider/AuthProvider";
+import toast, { Toaster } from 'react-hot-toast';
 
 const Navbar = () => {
+    const { user, logout } = useContext(AuthContext);
+    const handleLogout = () => {
+        logout();
+        toast.success('Logout');
+    }
     const links = <>
         <li><NavLink to="/" style={({ isActive, isPending, isTransitioning }) => {
             return {
@@ -59,28 +67,34 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <div className="dropdown dropdown-end">
-                        <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-                            <div className="w-10 rounded-full">
-                                <img alt="Tailwind CSS Navbar component" src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                    {
+                        user ? <div className="dropdown dropdown-end">
+                            <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                                <div className="w-10 rounded-full tooltip tooltip-open tooltip-left" data-tip={user.displayName}>
+                                    {
+                                        user ? <img alt="" src={user.photoURL} /> : <img alt="" src="" />
+                                    }
+                                </div>
                             </div>
-                        </div>
-                        <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
-                            <li>
-                                <a className="justify-between">
-                                    Profile
-                                    <span className="badge">New</span>
-                                </a>
-                            </li>
-                            <li><a>Settings</a></li>
-                            <li><a>Logout</a></li>
-                        </ul>
-                    </div>
+                            <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
+                                <li>
+                                    <a className="justify-between">
+                                        <Link to="/profile">Profile</Link>
+                                        <span className="badge">New</span>
+                                    </a>
+                                </li>
+                                <li><a>Logout</a></li>
+                            </ul>
+                        </div> : ""
+                    }
                     <div>
-                    <a className="btn rounded-none bg-white">Login</a>
+                        {
+                            user ? <a onClick={handleLogout} className="btn rounded-none bg-white">Logout</a> : <Link to="/login"><a className="btn rounded-none bg-white">Login</a></Link>
+                        }
                     </div>
                 </div>
             </div>
+            <Toaster></Toaster>
         </div>
     );
 };
