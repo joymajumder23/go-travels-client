@@ -1,11 +1,12 @@
 import Banner from "../Banner/Banner";
-import Navbar from "../Navbar/Navbar";
 
 const Home = () => {
     return (
         <div>
-            <Navbar></Navbar>
             <Banner></Banner>
+            <section className="mt-12">
+                <h1 className="text-3xl text-center font-bold">Tourist Spot</h1>
+                </section> 
         </div>
     );
 };

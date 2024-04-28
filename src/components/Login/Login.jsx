@@ -48,6 +48,7 @@ const Login = () => {
             })
             .catch(error => {
                 console.log(error.message);
+                toast.error("Login cancelled");
             })
     }
 
