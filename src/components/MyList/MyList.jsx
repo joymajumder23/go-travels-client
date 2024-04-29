@@ -4,16 +4,29 @@ import { AuthContext } from "../../provider/AuthProvider";
 const MyList = () => {
     const { user } = useContext(AuthContext);
     const [allSpots, setAllSpots] = useState([]);
-    console.log(user.email);
+    console.log(user?.email);
 
+    // useEffect(() => {
+    //     fetch(`http://localhost:5000/myList/${user?.email}`)
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             setAllSpots(data);
+    //             console.log(data);
+    //         })
+    // }, [user]);
+    // console.log(allSpots);
+    //
     useEffect(() => {
-        fetch(`http://localhost:5000/myList/${user.email}`)
-            .then(res => res.json())
-            .then(data => {
-                setAllSpots(data);
-                console.log(data);
-            })
+        if (user?.email) {
+            fetch(`http://localhost:5000/myList/${user?.email}`)
+                .then(res => res.json())
+                .then(data => {
+                    setAllSpots(data);
+                    console.log(data);
+                })
+        }
     }, [user]);
+
     console.log(allSpots);
     return (
         <div>

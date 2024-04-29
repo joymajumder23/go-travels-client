@@ -1,6 +1,7 @@
 import { useLoaderData } from "react-router-dom";
 import Banner from "../Banner/Banner";
 import HomeCard from "../HomeCard/HomeCard";
+import SouthEastAsia from "../SouthEastAsia/SouthEastAsia";
 
 const Home = () => {
     const allSpots = useLoaderData();
@@ -16,6 +17,9 @@ const Home = () => {
                     }
                 </div>
                 </section> 
+                <section>
+                    <SouthEastAsia></SouthEastAsia>
+                </section>
         </div>
     );
 };
