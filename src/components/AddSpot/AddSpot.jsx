@@ -16,7 +16,7 @@ const AddSpot = () => {
         const travel = form.travel.value;
         const totalVisitors = form.totalVisitors.value;
         // console.log(name, email, image, spot, country, location, avarage, description, season, travel, totalVisitors);
-        const touristSpot = {name, email, image, spot, country, location, avarage, season, travel, totalVisitors, description};
+        const touristSpot = { name, email, image, spot, country, location, avarage, season, travel, totalVisitors, description };
         console.log(touristSpot);
 
         fetch('http://localhost:5000/spots', {
@@ -26,21 +26,21 @@ const AddSpot = () => {
             },
             body: JSON.stringify(touristSpot)
         })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data);
-            if(data.insertedId){
-                Swal.fire({
-                    title: 'Success!',
-                    text: 'Added Successfully',
-                    icon: 'success',
-                    confirmButtonText: 'OK'
-                  })
-            }
-        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.insertedId) {
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'Added Successfully',
+                        icon: 'success',
+                        confirmButtonText: 'OK'
+                    })
+                }
+            })
     }
     return (
-        <div>
+        <div className="max-w-6xl mx-auto mt-12">
             <h1 className="text-center text-4xl font-bold">Add Tourists Spot</h1>
             <div>
                 <form onSubmit={handleSubmit} className="card-body">
@@ -72,12 +72,21 @@ const AddSpot = () => {
                             <input type="text" placeholder="enter tourist spot name" className="input input-bordered" name="spot" required />
                         </div>
                     </div>
+
                     <div className="flex gap-4">
                         <div className="form-control w-full">
                             <label className="label">
                                 <span className="label-text">Country Name</span>
                             </label>
-                            <input type="text" placeholder="enter country name" className="input input-bordered" name="country" required />
+                            <select type="dropdown" placeholder="enter country name" className="input input-bordered" name="country" required>
+                                <option selected>Choose Country</option>
+                                <option value="BD">Bangladesh</option>
+                                <option value="TH">Thailand</option>
+                                <option value="IN">Indonesia</option>
+                                <option value="MS">Malaysia</option>
+                                <option value="VN">Vietnam</option>
+                                <option value="CD">Cambodia</option>
+                            </select>
                         </div>
                         <div className="form-control w-full">
                             <label className="label">

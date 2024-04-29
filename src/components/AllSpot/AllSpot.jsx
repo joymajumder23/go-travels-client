@@ -5,7 +5,7 @@ const AllSpot = () => {
     const allSpots = useLoaderData();
     console.log(allSpots);
     return (
-        <div>
+        <div className="max-w-6xl mx-auto mt-12">
             <h1>All Tourist Spot: {allSpots.length}</h1>
             <div>
                 {
