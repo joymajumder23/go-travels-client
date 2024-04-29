@@ -7,6 +7,7 @@ import Register from "../components/Register.jsx/Register";
 import AllSpot from "../components/AllSpot/AllSpot";
 import AddSpot from "../components/AddSpot/AddSpot";
 import MyList from "../components/MyList/MyList";
+import ViewDetails from "../components/ViewDetails/ViewDetails";
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
     {
       path: "/myList",
       element: <MyList></MyList>
+    }, {
+      path: "/viewDetails",
+      element: <ViewDetails></ViewDetails>,
+      loader: () => fetch('http://localhost:5000/spots')
     }]
   },
 ]);
