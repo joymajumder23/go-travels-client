@@ -1,3 +1,5 @@
+import Swal from "sweetalert2";
+
 const AddSpot = () => {
     const handleSubmit = e => {
         e.preventDefault();
@@ -13,7 +15,29 @@ const AddSpot = () => {
         const season = form.season.value;
         const travel = form.travel.value;
         const totalVisitors = form.totalVisitors.value;
-        console.log(name, email, image, spot, country, location, avarage, description, season, travel, totalVisitors);
+        // console.log(name, email, image, spot, country, location, avarage, description, season, travel, totalVisitors);
+        const touristSpot = {name, email, image, spot, country, location, avarage, season, travel, totalVisitors, description};
+        console.log(touristSpot);
+
+        fetch('http://localhost:5000/spots', {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(touristSpot)
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            if(data.insertedId){
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Added Successfully',
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                  })
+            }
+        })
     }
     return (
         <div>
@@ -73,7 +97,7 @@ const AddSpot = () => {
                             <label className="label">
                                 <span className="label-text">Total Visitors Per Year</span>
                             </label>
-                            <input type="number" placeholder="enter total visitors" className="input input-bordered w-full" name="totalVisitors" required />
+                            <input type="text" placeholder="enter total visitors" className="input input-bordered w-full" name="totalVisitors" required />
                         </div>
                     </div>
                     <div className="flex w-full gap-4">
