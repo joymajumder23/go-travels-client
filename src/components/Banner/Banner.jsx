@@ -2,7 +2,7 @@ import Slider from "../Slider/Slider";
 
 const Banner = () => {
     return (
-        <div>
+        <div className="">
             <Slider></Slider>
         </div>
     );

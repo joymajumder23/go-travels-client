@@ -10,7 +10,7 @@ const Home = () => {
             <Banner></Banner>
             <section className="mt-12 max-w-6xl mx-auto">
                 <h1 className="text-3xl text-center font-bold">Tourist Spot</h1>
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-8">
                     {
                         allSpots.map(allSpot => <HomeCard key={allSpot._id} allSpot={allSpot}></HomeCard>)
                     }

@@ -80,12 +80,12 @@ const AddSpot = () => {
                             </label>
                             <select type="dropdown" placeholder="enter country name" className="input input-bordered" name="country" required>
                                 <option selected>Choose Country</option>
-                                <option value="BD">Bangladesh</option>
-                                <option value="TH">Thailand</option>
-                                <option value="IN">Indonesia</option>
-                                <option value="MS">Malaysia</option>
-                                <option value="VN">Vietnam</option>
-                                <option value="CD">Cambodia</option>
+                                <option value="Bangladesh">Bangladesh</option>
+                                <option value="Thailand">Thailand</option>
+                                <option value="Indonesia">Indonesia</option>
+                                <option value="Malaysia">Malaysia</option>
+                                <option value="Vietnam">Vietnam</option>
+                                <option value="Cambodia">Cambodia</option>
                             </select>
                         </div>
                         <div className="form-control w-full">

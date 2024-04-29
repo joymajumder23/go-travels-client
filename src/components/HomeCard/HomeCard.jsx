@@ -1,9 +1,10 @@
-import { TbListDetails } from "react-icons/tb";
+import { MdGroups } from "react-icons/md";
+import { TbListDetails, TbWorldPin } from "react-icons/tb";
 import { Link } from "react-router-dom";
 
 const HomeCard = ({ allSpot }) => {
     console.log(allSpot);
-    const { _id, image, spot, avarage, totalVisitors, travel, season, country } = allSpot;
+    const { _id, image, spot, totalVisitors, season, country } = allSpot;
     return (
         <div>
             <div className="card bg-base-100 shadow-xl">
@@ -14,8 +15,8 @@ const HomeCard = ({ allSpot }) => {
                         <div className="badge badge-neutral">{season}</div>
                     </h2>
                     <div className="flex flex-col gap-2">
-                        <div className="badge badge-outline">{country}</div>
-                        <p><span className="font-medium">Total Visitors:</span> <div className="badge badge-outline">{totalVisitors}</div></p>
+                        <p className="flex items-center gap-1"><TbWorldPin></TbWorldPin><div className="badge badge-outline">{country}</div></p>
+                        <p className="flex items-center gap-1"><span className="font-medium flex gap-1 items-center"><MdGroups />Total Visitors:</span> <div className="badge badge-outline">{totalVisitors}</div></p>
                     </div>
                     <div className="card-actions justify-end">
                         <Link to={`/viewDetails/${_id}`}><button className="btn bg-green-800 rounded-none text-white shadow-md hover:bg-blue-600"><TbListDetails></TbListDetails>View Details</button></Link>
