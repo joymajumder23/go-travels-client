@@ -1,7 +1,11 @@
-import Swal from "sweetalert2";
+import { useLoaderData } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const UpdateSpot = () => {
-    const handleSubmit = e => {
+    const loadedData = useLoaderData();
+    console.log(loadedData);
+    const { _id, name, email, image, spot, country, location, avarage, season, travel, totalVisitors, description } = loadedData;
+    const handleUpdate = (e) => {
         e.preventDefault();
         const form = e.target;
         const name = form.name.value;
@@ -15,47 +19,50 @@ const UpdateSpot = () => {
         const season = form.season.value;
         const travel = form.travel.value;
         const totalVisitors = form.totalVisitors.value;
-        // console.log(name, email, image, spot, country, location, avarage, description, season, travel, totalVisitors);
+
         const touristSpot = { name, email, image, spot, country, location, avarage, season, travel, totalVisitors, description };
         console.log(touristSpot);
 
-        fetch('http://localhost:5000/spots', {
-            method: "POST",
+        fetch(`http://localhost:5000/spots/${_id}`, {
+            method: "PUT",
             headers: {
-                'content-type': 'application/json'
+                "content-type": "application/json"
             },
             body: JSON.stringify(touristSpot)
         })
-            .then(res => res.json())
-            .then(data => {
+        .then(res => res.json())
+        .then(data => {
+            if(data.modifiedCount > 0){
                 console.log(data);
-                if (data.insertedId) {
-                    Swal.fire({
-                        title: 'Success!',
-                        text: 'Added Successfully',
-                        icon: 'success',
-                        confirmButtonText: 'OK'
-                    })
-                }
-            })
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Updated Successfully',
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                })
+                form.reset();
+            }
+        })
     }
+
     return (
         <div className="max-w-6xl mx-auto mt-12">
-            <h1 className="text-center text-4xl font-bold">Add Tourists Spot</h1>
+            <h1 className="text-center text-4xl font-bold">Update Tourists Spot</h1>
+            <p className='text-center text-xl font bold mt-2'>{spot}</p>
             <div>
-                <form onSubmit={handleSubmit} className="card-body">
+                <form onSubmit={handleUpdate} className="card-body">
                     <div className="flex gap-4">
                         <div className="form-control w-full">
                             <label className="label">
                                 <span className="label-text">Author Name</span>
                             </label>
-                            <input type="text" placeholder="enter your name" className="input input-bordered" name="name" required />
+                            <input type="text" placeholder="enter your name" className="input input-bordered" name="name" defaultValue={name} required />
                         </div>
                         <div className="form-control w-full">
                             <label className="label">
                                 <span className="label-text">Author Email</span>
                             </label>
-                            <input type="email" placeholder="enter your email" className="input input-bordered" name="email" required />
+                            <input type="email" placeholder="enter your email" className="input input-bordered" defaultValue={email} name="email" required />
                         </div>
                     </div>
                     <div className="flex gap-4">
@@ -63,13 +70,13 @@ const UpdateSpot = () => {
                             <label className="label">
                                 <span className="label-text">Image URL</span>
                             </label>
-                            <input type="text" placeholder="enter image URL" className="input input-bordered" name="image" required />
+                            <input type="text" placeholder="enter image URL" className="input input-bordered" name="image" defaultValue={image} required />
                         </div>
                         <div className="form-control w-full">
                             <label className="label">
                                 <span className="label-text">Tourists Spot Name</span>
                             </label>
-                            <input type="text" placeholder="enter tourist spot name" className="input input-bordered" name="spot" required />
+                            <input type="text" placeholder="enter tourist spot name" className="input input-bordered" defaultValue={spot} name="spot" required />
                         </div>
                     </div>
 
@@ -78,7 +85,7 @@ const UpdateSpot = () => {
                             <label className="label">
                                 <span className="label-text">Country Name</span>
                             </label>
-                            <select type="dropdown" placeholder="enter country name" className="input input-bordered" name="country" required>
+                            <select type="dropdown" placeholder="enter country name" className="input input-bordered" defaultValue={country} name="country" required>
                                 <option selected>Choose Country</option>
                                 <option value="Bangladesh">Bangladesh</option>
                                 <option value="Thailand">Thailand</option>
@@ -92,7 +99,7 @@ const UpdateSpot = () => {
                             <label className="label">
                                 <span className="label-text">Location</span>
                             </label>
-                            <input type="text" placeholder="enter location" className="input input-bordered" name="location" required />
+                            <input type="text" placeholder="enter location" className="input input-bordered" name="location" defaultValue={location} required />
                         </div>
                     </div>
                     <div className="flex gap-4">
@@ -100,13 +107,13 @@ const UpdateSpot = () => {
                             <label className="label">
                                 <span className="label-text">Avarage Cost</span>
                             </label>
-                            <input type="number" placeholder="enter avarage cost" className="input input-bordered" name="avarage" required />
+                            <input type="number" placeholder="enter avarage cost" className="input input-bordered" defaultValue={avarage} name="avarage" required />
                         </div>
                         <div className="form-control w-full">
                             <label className="label">
                                 <span className="label-text">Total Visitors Per Year</span>
                             </label>
-                            <input type="text" placeholder="enter total visitors" className="input input-bordered w-full" name="totalVisitors" required />
+                            <input type="text" placeholder="enter total visitors" className="input input-bordered w-full" name="totalVisitors" defaultValue={totalVisitors} required />
                         </div>
                     </div>
                     <div className="flex w-full gap-4">
@@ -114,23 +121,23 @@ const UpdateSpot = () => {
                             <label className="label">
                                 <span className="label-text">Seasonality</span>
                             </label>
-                            <input type="text" placeholder="enter seasonality" className="input input-bordered" name="season" required />
+                            <input type="text" placeholder="enter seasonality" className="input input-bordered" name="season" defaultValue={season} required />
                         </div>
                         <div className="form-control w-full">
                             <label className="label">
                                 <span className="label-text">Travel Time</span>
                             </label>
-                            <input type="text" placeholder="enter travel time" className="input input-bordered" name="travel" required />
+                            <input type="text" placeholder="enter travel time" className="input input-bordered" name="travel" defaultValue={travel} required />
                         </div>
                     </div>
                     <div className="w-full">
                         <label className="label w-full">
                             <span className="label-text">Short Description</span>
                         </label>
-                        <input type="text" placeholder="enter description" className="input input-bordered w-full" name="description" required />
+                        <input type="text" placeholder="enter description" className="input input-bordered w-full" defaultValue={description} name="description" required />
                     </div>
                     <div className="form-control mt-6">
-                        <button className="btn btn-primary">Add</button>
+                        <button className="btn btn-primary">Update</button>
                     </div>
                 </form>
             </div>

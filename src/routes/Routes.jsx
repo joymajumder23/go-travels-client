@@ -12,6 +12,7 @@ import PrivateRoute from "../components/PrivateRoute/PrivateRoute";
 import SouthEastAsia from "../components/SouthEastAsia/SouthEastAsia";
 import Explore from "../components/Explore/Explore";
 import Profile from "../components/Profile/Profile";
+import UpdateSpot from "../components/UpdateSpot/UpdateSpot";
 
 const router = createBrowserRouter([
   {
@@ -43,7 +44,7 @@ const router = createBrowserRouter([
     {
       path: "/myList",
       element: <MyList></MyList>,
-      // loader: ({params}) => fetch(`http://localhost:5000/myList/${params.email}`)
+      // loader: () => fetch("http://localhost:5000/spots")
     }, 
     {
       path: "/viewDetails/:id",
@@ -62,6 +63,11 @@ const router = createBrowserRouter([
 {
   path: "/profile",
   element: <Profile></Profile>
+},
+{
+  path: "/update/:id",
+  element: <UpdateSpot></UpdateSpot>,
+  loader: ({params}) => fetch(`http://localhost:5000/spots/${params.id}`)
 }]
   },
 ]);
