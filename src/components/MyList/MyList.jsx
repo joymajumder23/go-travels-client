@@ -3,10 +3,10 @@ import { AuthContext } from "../../provider/AuthProvider";
 import { useLoaderData } from "react-router-dom";
 
 const MyList = () => {
-    const data = useLoaderData();
+    // const data = useLoaderData();
     const { user } = useContext(AuthContext);
-    // const [allSpots, setAllSpots] = useState([]);
-    console.log(data);
+    const [allSpots, setAllSpots] = useState([]);
+    // console.log(data);
 
     // useEffect(() => {
     //     fetch(`http://localhost:5000/myList/${user?.email}`)
@@ -18,18 +18,18 @@ const MyList = () => {
     // }, [user]);
     // console.log(allSpots);
     //
-    // useEffect(() => {
-    //     if (user?.email) {
-    //         fetch(`http://localhost:5000/myList/${user?.email}`)
-    //             .then(res => res.json())
-    //             .then(data => {
-    //                 setAllSpots(data);
-    //                 console.log(data);
-    //             })
-    //     }
-    // }, [user]);
+    useEffect(() => {
+        if (user?.email) {
+            fetch(`http://localhost:5000/myList/${user?.email}`)
+                .then(res => res.json())
+                .then(data => {
+                    setAllSpots(data);
+                    console.log(data);
+                })
+        }
+    }, [user]);
 
-    // console.log(allSpots);
+    console.log(allSpots);
     return (
         <div>
             <h1>My List</h1>
