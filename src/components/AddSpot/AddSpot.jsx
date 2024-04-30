@@ -36,6 +36,7 @@ const AddSpot = () => {
                         icon: 'success',
                         confirmButtonText: 'OK'
                     })
+                    form.reset();
                 }
             })
     }

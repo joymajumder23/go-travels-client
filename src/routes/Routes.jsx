@@ -10,6 +10,7 @@ import MyList from "../components/MyList/MyList";
 import ViewDetails from "../components/ViewDetails/ViewDetails";
 import PrivateRoute from "../components/PrivateRoute/PrivateRoute";
 import SouthEastAsia from "../components/SouthEastAsia/SouthEastAsia";
+import Explore from "../components/Explore/Explore";
 
 const router = createBrowserRouter([
   {
@@ -40,7 +41,8 @@ const router = createBrowserRouter([
     },
     {
       path: "/myList",
-      element: <MyList></MyList>
+      element: <MyList></MyList>,
+      loader: ({params}) => fetch(`http://localhost:5000/myList/${params.email}`)
     }, 
     {
       path: "/viewDetails/:id",
@@ -49,9 +51,13 @@ const router = createBrowserRouter([
     },
   {
     path: "/country",
-    element: <SouthEastAsia></SouthEastAsia>,
-    loader: () => fetch('http://localhost:5000/country')
-  }]
+    element: <SouthEastAsia></SouthEastAsia>
+  },
+{
+  path: "/explore/:country",
+  element: <Explore></Explore>,
+  loader: () => fetch('http://localhost:5000/spots')
+}]
   },
 ]);
 

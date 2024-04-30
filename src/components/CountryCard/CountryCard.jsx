@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const CountryCard = ({aCountry}) => {
     const {image, country, description} = aCountry;
     return (
@@ -8,7 +10,7 @@ const CountryCard = ({aCountry}) => {
                     <h2 className="card-title">{country}</h2>
                     <p>{description}</p>
                     <div className="card-actions justify-end">
-                        <button className="btn btn-primary rounded-none">Explore</button>
+                        <Link to={`/explore/${country}`}><button className="btn btn-primary rounded-none">Explore</button></Link>
                     </div>
                 </div>
             </div>
