@@ -2,7 +2,7 @@ import Slider from "../Slider/Slider";
 
 const Banner = () => {
     return (
-        <div className="mt-10">
+        <div className="">
             <Slider></Slider>
         </div>
     );

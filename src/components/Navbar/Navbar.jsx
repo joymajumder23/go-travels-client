@@ -48,8 +48,8 @@ const Navbar = () => {
         }}>My List</NavLink></li>
     </>;
     return (
-        <div className="mx-auto max-w-6xl">
-            <div className="navbar bg-base-100">
+        <div className="max-w-6xl mx-auto">
+            <div className="navbar bg-base-100 z-10 sticky">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -83,13 +83,13 @@ const Navbar = () => {
                                         <span className="badge">New</span>
                                     </a>
                                 </li>
-                                <li><a>Logout</a></li>
+                                <li><a onClick={handleLogout}  className="">Logout</a></li>
                             </ul>
                         </div> : ""
                     }
                     <div>
                         {
-                            user ? <a onClick={handleLogout} className="btn rounded-none bg-white">Logout</a> : <Link to="/login"><a className="btn rounded-none bg-white">Login</a></Link>
+                            user ? "" : <Link to="/login"><a className="btn rounded-none bg-white">Login</a></Link>
                         }
                     </div>
                 </div>
