@@ -5,10 +5,11 @@ import { useContext, useState } from 'react';
 import { AuthContext } from '../../provider/AuthProvider';
 import toast, { Toaster } from 'react-hot-toast';
 import { Helmet } from 'react-helmet-async';
+import { Typewriter } from 'react-simple-typewriter';
 
 const Login = () => {
     const { loginUser, googleLogin, githubLogin } = useContext(AuthContext);
-    console.log(githubLogin);
+    // console.log(githubLogin);
     const [error, setError] = useState(null);
     const navigate = useNavigate();
     const location = useLocation();
@@ -47,8 +48,8 @@ const Login = () => {
 
             })
             .catch(error => {
-                console.log(error.message);
-                toast.error("Login cancelled");
+                // console.log(error.message);
+                toast.error(error.message);
             })
     }
 
@@ -70,9 +71,17 @@ const Login = () => {
                 <title>Home | Login</title>
             </Helmet>
             <div className="hero min-h-screen">
-                <div className="hero-content flex-col lg:flex-row-reverse gap-10">
+                <div className="hero-content flex-col lg:flex gap-10">
                     <div className="text-center lg:text-left">
-                        <h1 className="text-5xl font-bold">Login now!</h1>
+                        <h1 className="text-5xl font-bold"> <Typewriter
+                            words={['Login now!']}
+                            loop={5}
+                            cursor
+                            cursorStyle='_'
+                            typeSpeed={70}
+                            deleteSpeed={50}
+                            delaySpeed={1000}
+                        /></h1>
                     </div>
                     <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100 rounded-none">
                         <form onSubmit={handleLogin} className="card-body">

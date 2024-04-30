@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async';
 import { useLoaderData } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
@@ -30,23 +31,27 @@ const UpdateSpot = () => {
             },
             body: JSON.stringify(touristSpot)
         })
-        .then(res => res.json())
-        .then(data => {
-            if(data.modifiedCount > 0){
-                console.log(data);
-                Swal.fire({
-                    title: 'Success!',
-                    text: 'Updated Successfully',
-                    icon: 'success',
-                    confirmButtonText: 'OK'
-                })
-                form.reset();
-            }
-        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount > 0) {
+                    console.log(data);
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'Updated Successfully',
+                        icon: 'success',
+                        confirmButtonText: 'OK'
+                    })
+                    form.reset();
+                }
+            })
     }
 
     return (
         <div className="max-w-6xl mx-auto mt-12">
+            <Helmet>
+                <title>Home | Update Tourists Spot</title>
+            </Helmet>
+
             <h1 className="text-center text-4xl font-bold">Update Tourists Spot</h1>
             <p className='text-center text-xl font bold mt-2'>{spot}</p>
             <div>

@@ -1,7 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
-import { Link, useLoaderData } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const MyList = () => {
 
@@ -13,48 +14,48 @@ const MyList = () => {
 
     useEffect(() => {
         if (user?.email) {
-            console.log(user.email);
+            // console.log(user.email);
             fetch(`http://localhost:5000/myList/${user?.email}`)
                 .then(res => res.json())
                 .then(data => {
                     setAllSpots(data);
-                    console.log(data);
+                    // console.log(data);
                 })
         }
     }, [user]);
 
-    console.log(allSpots);
+    // console.log(allSpots);
 
-    const handleUpdate = e => {
-        e.preventDefault();
-        const form = e.target;
-        const name = form.name.value;
-        const email = form.email.value;
-        const image = form.image.value;
-        const spot = form.spot.value;
-        const country = form.country.value;
-        const location = form.location.value;
-        const avarage = form.avarage.value;
-        const description = form.description.value;
-        const season = form.season.value;
-        const travel = form.travel.value;
-        const totalVisitors = form.totalVisitors.value;
+    // const handleUpdate = e => {
+    //     e.preventDefault();
+    //     const form = e.target;
+    //     const name = form.name.value;
+    //     const email = form.email.value;
+    //     const image = form.image.value;
+    //     const spot = form.spot.value;
+    //     const country = form.country.value;
+    //     const location = form.location.value;
+    //     const avarage = form.avarage.value;
+    //     const description = form.description.value;
+    //     const season = form.season.value;
+    //     const travel = form.travel.value;
+    //     const totalVisitors = form.totalVisitors.value;
 
-        const newUser = { name, email, image, spot, country, location, avarage, description, season, travel, totalVisitors };
-        console.log(newUser);
+    //     const newUser = { name, email, image, spot, country, location, avarage, description, season, travel, totalVisitors };
+    //     console.log(newUser);
 
-        fetch(`http://localhost:5000/spots/${_id}`, {
-            method: "PUT",
-            headers: {
-                "content-type": "application/json"
-            },
-            body: JSON.stringify(newUser)
-        })
-            .then(res => res.json)
-            .then(data => {
-                console.log(data);
-            })
-    }
+    //     fetch(`http://localhost:5000/spots/${_id}`, {
+    //         method: "PUT",
+    //         headers: {
+    //             "content-type": "application/json"
+    //         },
+    //         body: JSON.stringify(newUser)
+    //     })
+    //         .then(res => res.json)
+    //         .then(data => {
+    //             console.log(data);
+    //         })
+    // }
 
     const handleDelete = _id => {
         console.log(_id);
@@ -92,6 +93,9 @@ const MyList = () => {
     }
     return (
         <div>
+            <Helmet>
+                <title>Home | My List</title>
+            </Helmet>
             <div className="max-w-6xl mx-auto mt-12">
                 <h1 className="text-3xl font-bold text-center">My List</h1>
                 <div className="overflow-x-auto mt-8">
@@ -123,7 +127,7 @@ const MyList = () => {
                         </tbody>
                     </table>
                 </div>
-                <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
+                {/* <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
                     <div className="modal-box">
                         <div className="max-w-6xl mx-auto mt-12">
                             <h1 className="text-center text-x font-bold">Add Tourists Spot</h1>
@@ -222,12 +226,11 @@ const MyList = () => {
                         </div>
                         <div className="modal-action">
                             <form method="dialog">
-                                {/* if there is a button in form, it will close the modal */}
                                 <button className="btn">Close</button>
                             </form>
                         </div>
                     </div>
-                </dialog>
+                </dialog> */}
             </div>
         </div>
     );

@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
 
 const AddSpot = () => {
@@ -28,7 +29,7 @@ const AddSpot = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                // console.log(data);
                 if (data.insertedId) {
                     Swal.fire({
                         title: 'Success!',
@@ -42,6 +43,9 @@ const AddSpot = () => {
     }
     return (
         <div className="max-w-6xl mx-auto mt-12">
+            <Helmet>
+                <title>Home | Add Tourists Spot</title>
+            </Helmet>
             <h1 className="text-center text-4xl font-bold">Add Tourists Spot</h1>
             <div>
                 <form onSubmit={handleSubmit} className="card-body">

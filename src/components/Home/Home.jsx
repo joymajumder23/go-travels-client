@@ -2,12 +2,17 @@ import { useLoaderData } from "react-router-dom";
 import Banner from "../Banner/Banner";
 import HomeCard from "../HomeCard/HomeCard";
 import SouthEastAsia from "../SouthEastAsia/SouthEastAsia";
+import { Helmet } from "react-helmet-async";
 
 const Home = () => {
     const allSpots = useLoaderData();
     console.log(allSpots);
     return (
         <div>
+            <Helmet>
+                <title>Home</title>
+            </Helmet>
+
             <Banner></Banner>
             <section className="mt-12 max-w-6xl mx-auto">
                 <h1 className="text-3xl text-center font-bold">Tourist Spot</h1>
@@ -16,10 +21,10 @@ const Home = () => {
                         allSpots.map(allSpot => <HomeCard key={allSpot._id} allSpot={allSpot}></HomeCard>)
                     }
                 </div>
-                </section> 
-                <section>
-                    <SouthEastAsia></SouthEastAsia>
-                </section>
+            </section>
+            <section>
+                <SouthEastAsia></SouthEastAsia>
+            </section>
         </div>
     );
 };
