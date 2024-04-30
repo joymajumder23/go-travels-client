@@ -39,11 +39,11 @@ const router = createBrowserRouter([
     },
     {
       path: "/addSpot",
-      element: <AddSpot></AddSpot>
+      element: <PrivateRoute><AddSpot></AddSpot></PrivateRoute>
     },
     {
       path: "/myList",
-      element: <MyList></MyList>,
+      element: <PrivateRoute><MyList></MyList></PrivateRoute>,
       // loader: () => fetch("http://localhost:5000/spots")
     }, 
     {
@@ -62,7 +62,7 @@ const router = createBrowserRouter([
 },
 {
   path: "/profile",
-  element: <Profile></Profile>
+  element: <PrivateRoute><Profile></Profile></PrivateRoute>
 },
 {
   path: "/update/:id",
