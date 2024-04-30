@@ -1,10 +1,10 @@
-# Speciality Real Estate Assignment Project
+# Southeast Asia Assignment Project
 **We used the some essintial packages:**
- 1. Undraw - used for various illustrates.
+ 1. lottie - react.
  2. React Icons - used for different icons.
  3. React Helmet - used for dynamic title.
  4. React Hot Toastify - used for toast.
- 5. Animate.css - used for animation.
+ 5. React-simple-typewritter - used for typewritter.
  6. React Hook Form - used for form utilization.
  7. Swiper Slider - used for slider.
  8. Freepik - used for different images.
