@@ -3,6 +3,7 @@ import { MdGroups } from "react-icons/md";
 import { SiInfracost } from "react-icons/si";
 import { TbListDetails } from "react-icons/tb";
 import { Link } from "react-router-dom";
+import PropTypes from 'prop-types';
 
 const ExploreCard = ({data}) => {
     const {_id, image, spot, travel, avarage, totalVisitors, season} = data;
@@ -32,5 +33,7 @@ const ExploreCard = ({data}) => {
         </div>
     );
 };
-
+ExploreCard.propTypes = {
+    data: PropTypes.object
+}
 export default ExploreCard;

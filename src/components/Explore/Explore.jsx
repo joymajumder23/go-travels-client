@@ -11,7 +11,7 @@ const Explore = () => {
     const [matches, setMatches] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/spots')
+        fetch('https://tenth-assignment-server-opal.vercel.app/spots')
         .then(res => res.json())
         .then(data => {
             setMatches(data);

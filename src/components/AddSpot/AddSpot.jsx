@@ -20,7 +20,7 @@ const AddSpot = () => {
         const touristSpot = { name, email, image, spot, country, location, avarage, season, travel, totalVisitors, description };
         console.log(touristSpot);
 
-        fetch('http://localhost:5000/spots', {
+        fetch('https://tenth-assignment-server-opal.vercel.app/spots', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'

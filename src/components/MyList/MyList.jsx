@@ -15,7 +15,7 @@ const MyList = () => {
     useEffect(() => {
         if (user?.email) {
             // console.log(user.email);
-            fetch(`http://localhost:5000/myList/${user?.email}`)
+            fetch(`https://tenth-assignment-server-opal.vercel.app/myList/${user?.email}`)
                 .then(res => res.json())
                 .then(data => {
                     setAllSpots(data);
@@ -44,7 +44,7 @@ const MyList = () => {
     //     const newUser = { name, email, image, spot, country, location, avarage, description, season, travel, totalVisitors };
     //     console.log(newUser);
 
-    //     fetch(`http://localhost:5000/spots/${_id}`, {
+    //     fetch(`https://tenth-assignment-server-opal.vercel.app/spots/${_id}`, {
     //         method: "PUT",
     //         headers: {
     //             "content-type": "application/json"
@@ -70,7 +70,7 @@ const MyList = () => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                fetch(`http://localhost:5000/spots/${_id}`, {
+                fetch(`https://tenth-assignment-server-opal.vercel.app/spots/${_id}`, {
                     method: "DELETE"
                 })
                     .then(res => res.json())

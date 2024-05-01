@@ -4,7 +4,7 @@ import CountryCard from "../CountryCard/CountryCard";
 const SouthEastAsia = () => {
     const [countries, setCountries] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/country')
+        fetch('https://tenth-assignment-server-opal.vercel.app/country')
         .then(res => res.json())
         .then(data => {
             // console.log(data);

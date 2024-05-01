@@ -1,13 +1,14 @@
 import { MdGroups } from "react-icons/md";
 import { TbListDetails, TbWorldPin } from "react-icons/tb";
 import { Link } from "react-router-dom";
+import PropTypes from 'prop-types';
 
 const HomeCard = ({ allSpot }) => {
     console.log(allSpot);
     const { _id, image, spot, totalVisitors, season, country } = allSpot;
     return (
         <div>
-            <div className="card bg-base-100 shadow-xl">
+            <div className="card bg-base-100 shadow-xl rounded-none">
                 <figure><img src={image} alt="Shoes" /></figure>
                 <div className="card-body">
                     <h2 className="card-title">
@@ -26,5 +27,7 @@ const HomeCard = ({ allSpot }) => {
         </div>
     );
 };
-
+HomeCard.propTypes = {
+    allSpot: PropTypes.object
+}
 export default HomeCard;

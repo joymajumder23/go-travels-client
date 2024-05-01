@@ -22,7 +22,7 @@ const router = createBrowserRouter([
     children: [{
       path: "/",
       element: <Home></Home>,
-      loader: () => fetch('http://localhost:5000/spots')
+      loader: () => fetch('https://tenth-assignment-server-opal.vercel.app/spots')
     },
     {
       path: "/login",
@@ -35,7 +35,7 @@ const router = createBrowserRouter([
     {
       path: "/allSpot",
       element: <AllSpot></AllSpot>,
-      loader: () => fetch('http://localhost:5000/spots')
+      loader: () => fetch('https://tenth-assignment-server-opal.vercel.app/spots')
     },
     {
       path: "/addSpot",
@@ -44,12 +44,12 @@ const router = createBrowserRouter([
     {
       path: "/myList",
       element: <PrivateRoute><MyList></MyList></PrivateRoute>,
-      // loader: () => fetch("http://localhost:5000/spots")
+      // loader: () => fetch("https://tenth-assignment-server-opal.vercel.app/spots")
     }, 
     {
       path: "/viewDetails/:id",
       element: <PrivateRoute><ViewDetails></ViewDetails></PrivateRoute>,
-      loader: () => fetch('http://localhost:5000/spots')
+      loader: () => fetch('https://tenth-assignment-server-opal.vercel.app/spots')
     },
   {
     path: "/country",
@@ -58,7 +58,7 @@ const router = createBrowserRouter([
 {
   path: "/explore/:country",
   element: <Explore></Explore>,
-  loader: () => fetch('http://localhost:5000/spots')
+  loader: () => fetch('https://tenth-assignment-server-opal.vercel.app/spots')
 },
 {
   path: "/profile",
@@ -67,7 +67,7 @@ const router = createBrowserRouter([
 {
   path: "/update/:id",
   element: <UpdateSpot></UpdateSpot>,
-  loader: ({params}) => fetch(`http://localhost:5000/spots/${params.id}`)
+  loader: ({params}) => fetch(`https://tenth-assignment-server-opal.vercel.app/spots/${params.id}`)
 }]
   },
 ]);
